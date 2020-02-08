@@ -110,6 +110,14 @@
     }
   </style>
   <script>
+    if (Element.prototype.animate == null) {
+      Element.prototype.animate = function () {
+        return {
+          cancel: function () {}
+        };
+      };
+    }
+  
     fetch('./questions.json').then(function (response) {
       return response.json();
     }).then(function (json) {
