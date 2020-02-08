@@ -126,6 +126,7 @@
     var a1 = document.body.animate([], 1);
     var a2 = document.body.animate([], 1);
     var a3 = new Audio('Dancing Queen.mp3');
+    var timeout0 = 0;
     
     document.body.hidden = false;
       var questions = json;
@@ -179,6 +180,7 @@
           document.querySelector("#answer3").onclick = function (event) {
             a1.cancel();
             a2.cancel();
+            clearTimeout(timeout0);
             event.preventDefault();
             if (index === questions.length - 1) {
               if (event.target.id === "answer1") {
@@ -201,7 +203,7 @@
             } else if (q.correctAnswer.toString() !== event.target.id.slice('answer'.length)) {
               var old = document.querySelector("#picture").src;
               document.querySelector("#picture").src = 'images/incorrect.jpg';
-              window.setTimeout(function () {
+              var timeout0 = window.setTimeout(function () {
                 document.querySelector("#picture").src = old;
               }, 2000);
               a1 = document.querySelector("#picture").animate([{
