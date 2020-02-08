@@ -201,10 +201,9 @@
                 window.open('https://money.alfabank.ru/p2p/web/transfer/dkiselev7970');
               }
             } else if (q.correctAnswer.toString() !== event.target.id.slice('answer'.length)) {
-              var old = document.querySelector("#picture").src;
               document.querySelector("#picture").src = 'images/incorrect.jpg';
-              var timeout0 = window.setTimeout(function () {
-                document.querySelector("#picture").src = old;
+              timeout0 = window.setTimeout(function () {
+                document.querySelector("#picture").src = nextImageSrc;
               }, 2000);
               a1 = document.querySelector("#picture").animate([{
                 'boxShadow': '0 0 3px 12px darkred'
